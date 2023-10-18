@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-
+#include <algorithm>
 
 using namespace std;
 
@@ -143,13 +143,79 @@ public:
         }
         return ans;
     }
+
+
+    int getIndex(vector<int> v, int K)
+    {
+        auto it = find(v.begin(), v.end(), K);
+        if (it != v.end())
+        {
+            int index = it - v.begin();
+            return index;
+        }
+        else {
+            return -1;
+        }
+    }
+
+    vector<vector<int>> remove(vector<vector<int>>& intervals, vector<int>& remInterval) {
+        cout << "INTERVALS: " << endl;
+        for(int i = 0; i < intervals.size(); i++){
+            cout << "[ ";
+            for(auto item : intervals[i]){
+                cout << item << " ";
+            }
+            cout << "]";
+        }
+        cout << "\nTO REMOVE INTERVAL: ";
+        cout << "[ ";
+        for(auto item : remInterval){
+            cout << item << " ";
+        }
+        cout << "]";
+        vector<vector<int>> ans;
+        vector<int> temp;
+        for(int i = 0; i < intervals.size(); i++){
+            for(int j = intervals[i][0]; j <= intervals[i][1];j++){
+                temp.push_back(j);
+            }
+        }
+        for(int i = remInterval[0]; i <= remInterval[1]; i++){
+            int k = getIndex(temp, i);
+            if(k > -1){
+                temp.erase(temp.begin()+k);
+            }
+        }
+        sort(temp.begin(), temp.end());
+        int lowest = 0;
+        int highest = 0;
+        for(int i = 0; i < temp.size()-1; i++){
+            if(temp[i] != temp[i+1]-1){
+                highest = i;
+                ans.push_back({temp[lowest], temp[highest]});
+                lowest = i + 1;
+                if(i == temp.size() - 2) ans.push_back({temp[temp.size()-1], temp[temp.size()-1]});
+            }
+        }
+        cout << "\nANSWER IS: " << endl;
+        for(int i = 0; i < ans.size(); i++){
+            cout << "[ ";
+            for(auto item : ans[i]){
+                cout << item << " ";
+            }
+            cout << "]";
+        }
+        return ans;
+    }
 };
 
 
 
 int main() {
     Solution a;
-    vector<vector<int>> v = {{1,2},{3,4},{6,7},{8,10},{12,16}};
-    vector<int> n = {5,13};
+    vector<vector<int>> v = {{1,2},{4,7},{9,10},{12,16}};
+    vector<int> n = {9,13};
+    vector<int> rem = {2,8};
     a.insert(v, n);
+    a.remove(v, rem);
 }
