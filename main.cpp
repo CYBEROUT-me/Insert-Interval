@@ -189,12 +189,18 @@ public:
         sort(temp.begin(), temp.end());
         int lowest = 0;
         int highest = 0;
-        for(int i = 0; i < temp.size()-1; i++){
-            if(temp[i] != temp[i+1]-1){
-                highest = i;
+        cout << endl;
+        for(auto item : temp){
+            cout << item << " ";
+        }
+        for(int i = 1; i <= temp.size(); i++){
+            cout << "\nI: " << i;
+            highest = i-1;
+            if(i == temp.size()) ans.push_back({temp[lowest], temp[temp.size()-1]});
+            else if(temp[i] != temp[i-1]+1){
                 ans.push_back({temp[lowest], temp[highest]});
-                lowest = i + 1;
-                if(i == temp.size() - 2) ans.push_back({temp[temp.size()-1], temp[temp.size()-1]});
+                lowest = i;
+                //if(i == temp.size() - 2) ans.push_back({temp[temp.size()-1], temp[temp.size()-1]});
             }
         }
         cout << "\nANSWER IS: " << endl;
@@ -216,6 +222,6 @@ int main() {
     vector<vector<int>> v = {{1,2},{4,7},{9,10},{12,16}};
     vector<int> n = {9,13};
     vector<int> rem = {2,8};
-    a.insert(v, n);
+    //a.insert(v, n);
     a.remove(v, rem);
 }
