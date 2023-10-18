@@ -1,0 +1,3 @@
+C:/Users/yukhn/CLionProjects/intervals/cmake-build-debug/CMakeFiles/intervals.dir
+C:/Users/yukhn/CLionProjects/intervals/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/yukhn/CLionProjects/intervals/cmake-build-debug/CMakeFiles/rebuild_cache.dir
