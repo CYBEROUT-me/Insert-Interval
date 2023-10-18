@@ -43,7 +43,7 @@ public:
                 if(newInterval[0] - intervals[i][0] <= intervals[i][1]-intervals[i][0] && newInterval[0] - intervals[i][0] >= 0) {
                     pos1 = i;
                 }
-                if(newInterval[1] - intervals[i][0] <g= intervals[i][1]-intervals[i][0] && newInterval[1] - intervals[i][0] >= 0) {
+                if(newInterval[1] - intervals[i][0] <= intervals[i][1]-intervals[i][0] && newInterval[1] - intervals[i][0] >= 0) {
                     pos2 = i;
                 }
                 if(i != intervals.size() - 1){
